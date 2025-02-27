@@ -292,4 +292,450 @@ function saudacao(nome) {
   console.log("Olá, " + nome);
 }
 saudacao(); // Olá, undefined
-```   
+```
+
+## Array/Lista
+
+Para criar uma lista, basta criar a variável e atriibuir os dados dentro de colchetes:
+
+```js
+const lista = ["exemplo", "exemplo2", "exemplo3"]
+```
+
+✴️ **`Atenção:`** não é possível definir o tipo de conteúdo de uma lista no JavaScript, pois a linguagem não é tipada, para isso usamos o TypeScript, que é uma linguagem construída em cima do JavaScript e é tipada.
+
+### Acessando o **`array / lista`**
+
+Para acessar a lista, você deve criar uma nova variável atribuir a lista desejada e especificar dentro do colchetes a posição do elemento da lista a ser acessado, lembrando que a lista começa a partir do 0.
+
+```js
+const names = ["Felipe", "João", "Maria"];
+
+const joao = names[1]
+
+console.log(joao); // joao
+```
+
+### .push()
+
+Adiciona um elemento no final do array.
+
+```js
+const names = ["Felipe", "João", "Maria"];
+
+names.push("Pedro")
+
+console.log(names); // "Felipe", "João", "Maria", "Pedro"
+```
+
+### .unshift()
+
+Adiciona um elemento no início do array.
+
+```js
+const names = ["Felipe", "João", "Maria"];
+
+names.unshift("Pedro")
+
+console.log(names); // "Pedro", "Felipe", "João", "Maria"
+```
+
+### .pop()
+
+Remove o último elemento do array.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+
+const ultimaFruta = frutas.pop();
+
+console.log(ultimaFruta); // Saída: "laranja"
+console.log(frutas); // Saída: ["maçã", "banana"]
+```
+
+### .shift()
+
+Remove o primeiro elemento de um array e retorna esse elemento. Além disso, ele modifica o array original, reduzindo seu tamanho em 1.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+
+const primeiraFruta = frutas.shift();
+
+console.log(primeiraFruta); // Saída: "maçã"
+console.log(frutas); // Saída: ["banana", "laranja"]
+```
+
+### Modificar um elemento do array
+
+Primeiro você acessa a posição que o elemento está, depois você atribui o novo valor a ele.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+
+frutas[3] = "tomate"
+
+console.log(frutas); // Saída: ["banana", "tomate"]
+```
+
+### .indexOf()
+
+Verifica o index de um elemento.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+
+console.log(frutas.indexOf("banana")); // Saída: 1
+
+console.log(frutas.indexOf("morango")); // Saída: -1
+```
+
+### .sort()
+
+Orgazina o array em ordem alfabética.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+
+console.log(frutas.sort()); // Saída: "banana",  "laranja", "maçã"
+```
+
+### .lenght
+
+Apresenta a quantidade de elementos de um array.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+
+console.log(frutas.length); // Saída: 3
+```
+
+### `Array.isArray()`
+
+Verifica se uma variável é um array.
+
+```js
+const frutas = ["maçã", "banana", "laranja"];
+const texto = "Olá, mundo!";
+const numero = 42;
+
+console.log(Array.isArray(frutas)); // Saída: true
+console.log(Array.isArray(texto));  // Saída: false
+console.log(Array.isArray(numero)); // Saída: false
+```
+
+## Map, Filter e Reduce
+
+### .map()
+
+Percorre cada elemento de um array, aplica uma transformação a cada um desses elementos e retorna um novo array com os resultados. Ele não altera o array original.
+
+```js
+let pessoas = [
+    { nome: "Alice", idade: 25 },
+    { nome: "Bob", idade: 30 },
+    { nome: "Carlos", idade: 35 }
+];
+
+let nomes = pessoas.map(pessoa => pessoa.nome);
+
+console.log(nomes); // Saída: ["Alice", "Bob", "Carlos"]
+```
+
+### .filter()
+
+Cria um novo array com todos os elementos que passaram no teste implementado pela função fornecida.
+
+```js
+const ages = [8, 13, 27, 30, 22, 40];
+
+const evenAges = ages.filter(function(age) {
+    return age % 2 === 0;
+});
+
+console.log(evenAges); // [8, 30, 22, 40]
+```
+
+### .reduce()
+
+Executa uma função reducer (fornecida) para cada elemento do array, resultando em um único valor de retorno.
+
+```js
+const ages = [8, 13, 27, 30, 22, 40];
+
+const sumOfAges = ages.reduce(function(age, accumulator){
+    return accumulator + age;
+}, 0);
+
+console.log(sumOfAges); // 140
+```
+
+### Objetos
+
+É uma coleção de propriedades, onde cada propriedade é uma associação entre um nome (ou chave) e um valor. Ele é usado para armazenar dados estruturados e pode representar coisas do mundo real, como uma pessoa, um produto, um carro, etc.
+
+```js
+const person = {
+    firstName: 'Felipe',
+    lastName: 'Rocha',
+    age: "21",
+    hobbies: ['Assistir F1', 'Jogar Futebol', 'Ler'],
+};
+```
+
+### Acessando uma propriedade de um objeto
+
+Podemos atribuir a uma variável o valor de uma propriedade.
+
+```js
+const person = {
+    firstName: 'Felipe',
+    lastName: 'Rocha',
+    age: "21",
+    hobbies: ['Assistir F1', 'Jogar Futebol', 'Ler'],
+};
+
+const firstName = person.firstName;
+const lastName = person.lastName;
+const age = person.age;
+const hobbies = person.hobbies;
+
+console.log(firstName); // Felipe
+console.log(lastName); // Rocha
+console.log(age); // 21
+console.log(hobbies); // ['Assistir F1', 'Jogar Futebol', 'Ler']
+```
+
+### Destructuring
+
+Forma mais fácil de acessar várias propriedades de uma vez em uma só linha.
+
+```js
+const person = {
+    firstName: 'Felipe',
+    lastName: 'Rocha',
+    age: "21",
+    hobbies: ['Assistir F1', 'Jogar Futebol', 'Ler'],
+};
+
+const {firstName, lastName, age, hobbies} = person;
+
+console.log(firstName);
+console.log(lastName);
+console.log(age);
+console.log(hobbies);
+```
+
+`OBS:` é possível renomear a propriedade da seguinte forma
+
+```js
+const {firstName: primeiroNome, lastName, age, hobbies} = person;
+```
+
+### Adicionando propriedades a um objeto
+
+É possível adicionar propriedades a um objeto fora do bloco do objeto:
+
+```js
+const person = {
+    firstName: 'Felipe',
+    lastName: 'Rocha',
+    age: "21",
+    hobbies: ['Assistir F1', 'Jogar Futebol', 'Ler'],
+};
+
+person.dog = "Dumbo" 
+
+console.log(person.dog) // Dumbo
+```
+
+### Objetos dentro de objetos
+
+É possível adicionar objetos dentro de um objeto.
+
+```js
+const person = {
+    firstName: 'Felipe',
+    lastName: 'Rocha',
+    age: "21",
+    hobbies: ['Assistir F1', 'Jogar Futebol', 'Ler'],
+    dog: {
+        name: "Dumbo",
+        age: "2"
+    }
+};
+
+const {firstName, lastName, age, hobbies} = person;
+
+console.log(firstName);
+console.log(lastName);
+console.log(age);
+console.log(hobbies);
+console.log(person.dog.age); // Dumbo
+```
+
+✴️ Para fazer o **destructuring** de um objeto que está dentro de outro objeto, é da forma a seguir:
+
+```js
+const person = {
+    firstName: 'Felipe',
+    lastName: 'Rocha',
+    age: "21",
+    hobbies: ['Assistir F1', 'Jogar Futebol', 'Ler'],
+    dog: {
+        name: "Dumbo",
+        age: "2"
+    }
+};
+
+const {firstName, lastName, age, hobbies, dog: {name, age: dogAge}, } = person; // também adicionar um novo nome
+
+console.log(firstName);
+console.log(lastName);
+console.log(age);
+console.log(hobbies);
+
+console.log(person.dog.age); // Dumbo
+console.log(dogAge); // 2
+```
+
+## Convertendo variáveis para JSON
+
+### JSON.stringify()
+
+Converte um objeto ou valor em uma `string` no formato `JSON`. Ele é muito útil quando você precisa enviar dados para um servidor, armazenar dados localmente ou simplesmente visualizar um objeto como uma string.
+
+```js
+const toDo = [
+    {
+        id: 1,
+        description: "Estudar JS",
+        isCompleted: false,
+    },
+    {
+        id: 2,
+        description: "Estudar React",
+        isCompleted: true,
+    },
+    {
+        id: 3,
+        description: "Estudar TypeScript",
+        isCompleted: true,
+    },
+];
+
+const toDoJSON = JSON.stringify(toDo);
+
+console.log(toDoJSON); // [{"id":1,"description":"Estudar JS","isCompleted":false},{"id":2,"description":"Estudar React","isCompleted":true},{"id":3,"description":"Estudar TypeScript","isCompleted":true}]
+```
+
+### JSON.parse()
+
+Transforma um JSON em uma lista.
+
+```js
+const toDo = [
+    {
+        id: 1,
+        description: "Estudar JS",
+        isCompleted: false,
+    },
+    {
+        id: 2,
+        description: "Estudar React",
+        isCompleted: true,
+    },
+    {
+        id: 3,
+        description: "Estudar TypeScript",
+        isCompleted: true,
+    },
+];
+
+const toDoJSON = JSON.stringify(toDo);
+
+console.log(toDoJSON); // [{"id":1,"description":"Estudar JS","isCompleted":false},{"id":2,"description":"Estudar React","isCompleted":true},{"id":3,"description":"Estudar TypeScript","isCompleted":true}]
+
+
+const toDoList = JSON.parse(toDoJSON);
+
+console.log(toDoList); // [ { id: 1, description: 'Estudar JS', isCompleted: false }, { id: 2, description: 'Estudar React', isCompleted: true }, { id: 3, description: 'Estudar TypeScript', isCompleted: true } ]
+```
+
+## Loops
+
+São laços de repetição que são usados para executar um bloco de código várias vezes.
+
+### for ()
+
+O loop `for` é o mais comum e é usado quando você sabe quantas vezes quer repetir o código.
+
+```js
+for (let i = 0; i <= 5; i++) {
+    console.log(i); 
+}
+```
+
+### for of
+
+É usado para iterar sobre elementos de objetos iteráveis, como arrays, strings, mapas, etc.
+
+```js
+const cars = ["Ferrari", "Tesla", "Mercedes"];
+
+for (let car of cars) {
+    console.log(car);
+}
+```
+
+### .forEach()
+
+É usado para iterar sobre elementos de um array. Ele executa uma função para cada elemento.
+
+```js
+const cars = ["Ferrari", "Tesla", "Mercedes"];
+
+cars.forEach(function(car) {
+    console.log(car);
+});
+```
+
+### while
+
+Repete um bloco de código enquanto uma condição for verdadeira.
+
+```js
+let i = 0;
+
+while (i < 10) {
+    console.log("index é menor do que 10!");
+    i++; // mesma coisa que i = i + 1 -ou- i += 1
+};
+```
+
+### for in
+
+É usado para iterar sobre as propriedades enumeráveis de um objeto.
+
+```js
+const person = {
+    name: "Jane",
+    age: 21,
+}
+
+for (property in person) {
+    console.log(person[property]); // Jane, 21
+}
+```
+
+## Condicionais
+
+### if & else
+
+### else if
+
+### AND ( && ) e OR ( || )
+
+### Ternary Operator
+
+### Switch
