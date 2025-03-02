@@ -730,12 +730,580 @@ for (property in person) {
 
 ## Condicionais
 
-### if & else
+São estruturas usadas para tomar decisões no código com base em condições. Elas permitem que o programa execute diferentes blocos de código dependendo se uma condição é **`true`** ou **`false`**.
+
+### if
+
+É a condicional mais básica, ele executa um bloco de código se a condição for verdadeira.
+
+```js
+const sum = 1 + 1;
+
+if (sum === 2) {
+    console.log('Sum is 2!!'); // Sum is 2!!
+}
+```
+
+✴️ Pode ser lido da seguinte forma ➜ Se a variável "sum" for igual a 2, exiba **`console.log('Sum is 2!!')`**.
+
+**OBS:** " == " verifica somente o valor, já o " === " verifica o valor e o tipo.
+
+### if ... else
+
+Permite executar um bloco de código se a condição for verdadeira, caso seja falso, o outro bloco será executado.
+
+```js
+const sum = 1 + 1;
+
+if (sum === 3) {
+    console.log('Sum is 2!!');
+} else {
+    console.log('Sum is not 2!!'); // Sum is not 2!!
+}
+```
+
+✴️ Pode ser lido da seguinte forma ➜ Se a variável "sum" for igual a 2, exiba **`console.log('Sum is 2!!')`**, **se não**, exiba **`console.log('Sum is not 2!!')`**.
 
 ### else if
 
-### AND ( && ) e OR ( || )
+É usado para testar várias condições em sequência. Se a primeira condição for falsa, ele testa a próxima, e assim por diante.
+
+```js
+const sum = 1 + 2;
+
+if (sum === 2) {
+    console.log('Sum is 2!!');
+} else if (sum === 3) {
+    console.log('Sum is 3!!');
+} else {
+    console.log('Sum is not 2!!');
+}
+```
+
+✴️ Pode ser lido da seguinte forma ➜ Se a variável "sum" for igual a 2, exiba **`console.log('Sum is 2!!')`**, **se não**, verifique se é igual a 3, **se não**, exiba **`console.log('Sum is not 2!!')`**.
+
+### AND ( && ) , OR ( || ) e NOT ( ! )
+
+#### AND
+
+Só é **verdadeiro** se os dois valores forem **verdadeiros**. 
+
+|   Operando A   |   Operando B   | A && B |
+|----------------|----------------|--------|
+| `V` \| `true`  | `V` \| `true`  | `true` |
+| `V` \| `true`  | `F` \| `false` | `false`|
+| `F` \| `false` | `V` \| `true`  | `false`|
+| `F` \| `false` | `F` \| `false` | `false`|
+
+```js
+const sum1 = 2 + 2;
+const sum2 = 3 + 3;
+
+if (sum1 === 4 && sum2 === 6) {
+    console.log('sum1 is 4 and sum2 is 6!');
+}
+```
+
+#### OR
+
+É **verdadeiro** se pelo menos um dos valores forem **verdadeiros**
+
+|   Operando A   |   Operando B   | A \|\| B |
+|----------------|----------------|----------|
+| `V` \| `true`  | `V` \| `true`  | `true`   |
+| `V` \| `true`  | `F` \| `false` | `true`   |
+| `F` \| `false` | `V` \| `true`  | `true`   |
+| `F` \| `false` | `F` \| `false` | `false`  |
+
+```js
+const sum1 = 2 + 2;
+const sum2 = 3 + 3;
+
+if (sum1 === 4 || sum2 === 8) {
+    console.log('sum1 is 4 or sum2 is 8!');
+}
+```
+
+#### NOT
+
+**Inverte** o valor
+
+|   Operando A   |        !A        |
+|----------------|------------------|
+| `V` \| `true`  | `F` \| `false`   |
+| `F` \| `false` | `V` \| `true`    |
+
+```js
+const a = 3;
+
+console.log(!(a === 3)); // false
+```
 
 ### Ternary Operator
 
+Ele é chamado de "ternário" porque usa três operandos: uma condição, um valor para quando a condição é verdadeira e outro valor para quando a condição é falsa.
+
+É útil para definir variáveis baseando em uma condição. É uma forma abreviada de escrever uma condicional if...else. Ele é útil para decisões simples.
+
+```js
+condição ? valorSeVerdadeiro : valorSeFalso;
+```
+
+**`condição`**: Uma expressão que será avaliada como true ou false.
+
+**`valorSeVerdadeiro`**: O valor retornado se a condição for true.
+
+**`valorSeFalso`**: O valor retornado se a condição for false.
+
+```js
+const sum1 = 1 + 1;
+
+let number = sum1 === 2 ? 2 : 4;
+
+console.log(number); // 2
+```
+
 ### Switch
+
+É uma estrutura de controle usada para executar diferentes blocos de código com base no valor de uma expressão. Ele é uma alternativa ao uso de múltiplos `if...else` quando você precisa comparar uma única variável ou expressão com vários valores possíveis.
+
+```js
+let diaDaSemana = 4;
+
+switch (diaDaSemana) {
+    case 1:
+        console.log("Sexta-Feira");
+        break;
+    case 2:
+        console.log("Sábado");
+        break;
+    case 3:
+        console.log("Domingo");
+        break;
+    default:
+        console.log("Dia inválido");
+}
+```
+
+✴️ `break` ➜ Ao  fim de cada case, deve-se usar o `break` para indicar o fim da execução, caso contrário, os outros casos vão ser executados também.
+
+✴️ `default` ➜ É executado quando nenhum case responde à expressão.
+
+## Falsy & Truthy
+
+### Falsy
+
+Valores que são considerados **`falsy`**:
+
+1. **`false:`** O valor booleano **`false`**.
+
+2. **`0:`** O número zero.
+
+3. **`" ":`** Uma string vazia.
+
+4. **`null:`** O valor **`null`**.
+
+5. **`undefined:`** O valor **`undefined`**.
+
+6. **`NaN:`** "Not a Number" (não é um número).
+
+```js
+// 1. false
+if (false) {
+    console.log("false é truthy.");
+} else {
+    console.log("false é falsy."); // Este será executado
+}
+
+// 2. 0
+if (0) {
+    console.log("0 é truthy.");
+} else {
+    console.log("0 é falsy."); // Este será executado
+}
+
+// 3. "" (string vazia)
+if ("") {
+    console.log("String vazia é truthy.");
+} else {
+    console.log("String vazia é falsy."); // Este será executado
+}
+
+// 4. null
+if (null) {
+    console.log("null é truthy.");
+} else {
+    console.log("null é falsy."); // Este será executado
+}
+
+// 5. undefined
+if (undefined) {
+    console.log("undefined é truthy.");
+} else {
+    console.log("undefined é falsy."); // Este será executado
+}
+
+// 6. NaN
+if (NaN) {
+    console.log("NaN é truthy.");
+} else {
+    console.log("NaN é falsy."); // Este será executado
+}
+```
+
+### Truthy
+
+Qualquer valor que não seja **`falsy`** é considerado **`truthy`**. Isso inclui:
+
+1. **`true:`** O valor booleano **`true`**.
+
+2. **`1:`** Qualquer número diferente de zero.
+
+3. **`"texto":`** Qualquer string não vazia.
+
+4. **`[]:`** Um array vazio (mesmo que esteja vazio, é truthy).
+
+5. **`{}:`** Um objeto vazio.
+
+6. **`function() {}:`** Uma função.
+
+```js
+// 1. true
+if (true) {
+    console.log("true é truthy."); // Este será executado
+} else {
+    console.log("true é falsy.");
+}
+
+// 2. 1 (ou qualquer número diferente de zero)
+if (1) {
+    console.log("1 é truthy."); // Este será executado
+} else {
+    console.log("1 é falsy.");
+}
+
+// 3. "texto" (string não vazia)
+if ("texto") {
+    console.log("String não vazia é truthy."); // Este será executado
+} else {
+    console.log("String não vazia é falsy.");
+}
+
+// 4. [] (array vazio)
+if ([]) {
+    console.log("Array vazio é truthy."); // Este será executado
+} else {
+    console.log("Array vazio é falsy.");
+}
+
+// 5. {} (objeto vazio)
+if ({}) {
+    console.log("Objeto vazio é truthy."); // Este será executado
+} else {
+    console.log("Objeto vazio é falsy.");
+}
+
+// 6. function() {} (função)
+if (function() {}) {
+    console.log("Função é truthy."); // Este será executado
+} else {
+    console.log("Função é falsy.");
+}
+```
+
+## Funtions & Arrow Function
+
+### Function
+
+São blocos de código que podem ser definidos uma vez e reutilizados várias vezes. Elas são usadas para organizar o código, evitar repetição e encapsular lógica.
+
+```js
+function sum(a, b) {
+    return a + b;
+}
+
+console.log(sum(2, 10)); // 12
+```
+
+### Arrow Function
+
+São uma sintaxe mais curta e moderna para escrever funções.
+
+```js
+const nomeDaFuncao = (parametro1, parametro2) => {
+    // Código a ser executado
+    return resultado; // Opcional
+};
+```
+
+**Se a função tiver apenas uma expressão, as chaves {} e a palavra-chave return podem ser omitidas:**
+
+```js
+const nomeDaFunção = (parametro1, parametro2) => expressão;
+```
+
+**Se a função tiver apenas um parâmetro, os parênteses () podem ser omitidos:**
+
+```js
+const nomeDaFunção = parametro => expressão;
+```
+
+---
+
+```js
+function sum(a, b = 10) {
+    return a + b;
+}
+
+// Mesma coisa que a função de cima, que é uma função normal
+const sumArrow = (a, b = 10) => {
+    return a + b;
+};
+
+// Mesma coisa que a de cima
+const sumArrow2 = (a, b = 10) => a + b;
+
+const sumValue = sum(2);
+const sumArrowValue = sumArrow(3);
+const sumArrow2Value = sumArrow2(4);
+
+console.log(sumValue);
+console.log(sumArrowValue);
+console.log(sumArrow2Value);
+```
+
+## POO (Programação Orientada a Objetos)
+
+Exemplo de uma classe:
+
+```js
+class Pessoa {
+    constructor(nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    saudacao() {
+        console.log(`Olá, meu nome é ${this.nome} e eu tenho ${this.idade} anos.`);
+    }
+}
+
+// Criando um objeto a partir da classe
+const pessoa1 = new Pessoa("João", 25);
+pessoa1.saudacao(); // Saída: "Olá, meu nome é João e eu tenho 25 anos."
+```
+
+**`constructor():`** Um método especial que é chamado quando um objeto é criado a partir da classe. Ele é usado para inicializar as propriedades do objeto.
+
+**`this:`** Refere-se à instância atual da classe (o objeto que está sendo criado).
+
+**`Métodos:`** Funções que pertencem à classe e podem ser chamadas em seus objetos.
+
+### Classes
+
+São uma forma de criar objetos com propriedades e métodos compartilhados. Elas são uma sintaxe mais clara e organizada para trabalhar com herança e orientação a objetos.
+
+```js
+class NomeDaClasse {
+    // Construtor (inicializa o objeto)
+    constructor(parametro1, parametro2) {
+        this.propriedade1 = parametro1;
+        this.propriedade2 = parametro2;
+    }
+}
+```
+
+### Métodos
+
+São funções que pertencem à classe e podem ser chamadas em seus objetos.
+
+Para criar métodos, você deve criar dentro da estrutura da classe:
+
+```js
+class NomeDaClasse {
+    // Construtor (inicializa o objeto)
+    constructor(parametro1, parametro2) {
+        this.propriedade1 = parametro1;
+        this.propriedade2 = parametro2;
+    }
+
+    // Métodos (funções associadas à classe)
+    metodo() {
+        // Código do método
+    }
+}
+```
+
+### Métodos Estáticos
+
+É um método que pertence à classe em si, e não às instâncias (objetos) da classe. Isso significa que você pode chamar um método estático diretamente na classe, sem precisar criar um objeto a partir dela.
+
+De certo modo, caso o método não use informações do objeto, usamos o `static`.
+
+```js
+class NomeDaClasse {
+    static nomeDoMetodo() {
+        // Código do método
+    }
+}
+```
+
+```js
+class Matematica {
+    static soma(a, b) {
+        return a + b;
+    }
+}
+
+// Chamando o método estático diretamente na classe
+console.log(Matematica.soma(2, 3)); // Saída: 5
+```
+
+### Herança
+
+A herança permite que uma classe (chamada de classe filha ou subclasse) herde propriedades e métodos de outra classe (chamada de classe pai ou superclasse). Isso promove a reutilização de código e a organização do programa.
+
+```js
+// Classe Pai
+class Veiculo {
+    constructor(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
+    descricao() {
+        console.log(`Este é um ${this.marca} ${this.modelo}.`);
+    }
+}
+
+// Classe Filha
+class Carro extends Veiculo {
+    constructor(marca, modelo, portas) {
+        super(marca, modelo); // Chama o construtor da classe pai
+        this.portas = portas;
+    }
+
+    // Sobrescreve o método descricao
+    descricao() {
+        console.log(`Este é um ${this.marca} ${this.modelo} com ${this.portas} portas.`);
+    }
+
+    // Novo método específico da classe filha
+    buzinar() {
+        console.log("Biiiiiiii!");
+    }
+}
+
+// Criando um objeto da classe filha
+const carro1 = new Carro("Toyota", "Corolla", 4);
+carro1.descricao(); // Saída: "Este é um Toyota Corolla com 4 portas."
+carro1.buzinar();   // Saída: "Biiiiiiii!"
+```
+
+**`extends:`** Indica que a ClasseFilha herda da ClassePai.
+
+**`super:`** Usado na classe filha para chamar o construtor ou métodos da classe pai.
+
+**`new:`** Cria um objeto a partir de uma classe ou função, permitindo que você use as propriedades e métodos definidos nela.
+
+## Selecionando elementos do DOM
+
+JavaScript oferece vários métodos para selecionar elementos do DOM. Os principais são:
+
+1. **`document.getElementById():`**
+
+* Seleciona um elemento pelo seu ID.
+
+* Retorna um único elemento (ou null se não encontrar).
+
+2. **`document.getElementsByClassName():`**
+
+* Seleciona elementos pelo nome da classe.
+
+* Retorna uma HTMLCollection (lista de elementos).
+
+3. **`document.getElementsByTagName():`**
+
+* Seleciona elementos pelo nome da tag (por exemplo, div, p, a).
+
+* Retorna uma HTMLCollection.
+
+4. **`document.querySelector():`**
+
+* Seleciona o primeiro elemento que corresponde a um seletor CSS.
+
+* Retorna um único elemento (ou null se não encontrar).
+
+5. **`document.querySelectorAll():`**
+
+* Seleciona todos os elementos que correspondem a um seletor CSS.
+
+* Retorna uma NodeList (lista de elementos).
+
+```js
+// Selecionando elementos
+const container = document.getElementById("container");
+const textos = document.getElementsByClassName("texto");
+const paragrafos = document.getElementsByTagName("p");
+const primeiroParagrafo = document.querySelector(".texto");
+const todosParagrafos = document.querySelectorAll(".texto");
+
+// Exibindo no console
+console.log(container);
+console.log(textos);
+console.log(paragrafos);
+console.log(primeiroParagrafo);
+console.log(todosParagrafos);
+
+// Iterando sobre uma NodeList
+todosParagrafos.forEach((paragrafo) => {
+    console.log(paragrafo.textContent);
+});
+```
+
+## Manipulando Elementos do DOM
+
+```js
+// Seleciona o container
+const container = document.getElementById("container");
+
+// Altera o conteúdo do container
+container.innerHTML = "<p>Novo conteúdo adicionado!</p>";
+
+// Seleciona o primeiro parágrafo
+const primeiroParagrafo = document.querySelector(".texto");
+
+// Altera o texto do parágrafo
+primeiroParagrafo.textContent = "Texto alterado!";
+
+// Altera o estilo do parágrafo
+primeiroParagrafo.style.color = "blue";
+primeiroParagrafo.style.fontSize = "20px";
+
+// Adiciona uma classe ao parágrafo
+primeiroParagrafo.classList.add("destaque");
+
+// Cria um novo parágrafo
+const novoParagrafo = document.createElement("p");
+novoParagrafo.textContent = "Este é um novo parágrafo.";
+
+// Adiciona o novo parágrafo ao container
+container.appendChild(novoParagrafo);
+
+// Remove o primeiro parágrafo
+container.removeChild(primeiroParagrafo);
+```
+
+## Eventos
+
+### Escutando o evento de envio de formulário
+
+
+
+### Escutando o evento de envio de input
+
+
+
+### Validação simples dos inputs do formulário
+
+
