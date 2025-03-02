@@ -1296,14 +1296,19 @@ container.removeChild(primeiroParagrafo);
 
 ## Eventos
 
-### Escutando o evento de envio de formulário
+```js
+formulario.addEventListener("submit", function(evento) {
+    // Código a ser executado quando o formulário for enviado
+    evento.preventDefault(); // Evita o envio padrão do formulário
+});
+```
 
+* **`formulario:`** O elemento do formulário que você deseja escutar.
 
+* **`submit:`** O tipo de evento que estamos escutando.
 
-### Escutando o evento de envio de input
+* **`evento:`** O objeto de evento que contém informações sobre o envio.
 
+* **`evento.preventDefault():`** Impede o comportamento padrão do formulário (recarregar a página).
 
-
-### Validação simples dos inputs do formulário
-
-
+## Criando e Validando um formulário
