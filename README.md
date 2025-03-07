@@ -1311,4 +1311,87 @@ formulario.addEventListener("submit", function(evento) {
 
 * **`evento.preventDefault():`** Impede o comportamento padrão do formulário (recarregar a página).
 
-## Criando e Validando um formulário
+## Assíncrono
+
+### O que é um código assíncrono 
+
+Permite que certas operações sejam executadas em segundo plano, sem bloquear a execução do restante do código. Isso é útil para tarefas que demoram um tempo para serem concluídas, como:
+
+✔️ Fazer requisições a APIs
+
+✔️ Ler ou escrever arquivos
+
+✔️ Aguardar um tempo antes de executar algo
+
+✔️ Acessar bancos de dados
+
+Há 3 maneiras de lidar com esse tipo de código:
+
+* Callbacks
+* Promises
+* Async/Await
+
+### Callback
+
+É uma função passada como argumento para outra função, para ser executada depois que essa função principal terminar sua tarefa.
+
+```js
+function saudacao(nome, callback) {
+    console.log("Olá, " + nome);
+    callback(); // Chama a função passada como argumento
+}
+
+function despedida() {
+    console.log("Até logo!");
+}
+
+saudacao("Carlos", despedida);
+
+```
+
+📝 Saída no console:
+
+```
+Olá, Carlos
+Até logo!
+```
+
+✔️ Aqui, **`despedida()`** é um callback que só é chamado depois da saudação.
+
+
+### setTimeout()
+
+É uma função assíncrona que permite agendar a execução de um código após um tempo específico.
+
+```js
+setTimeout(() => {
+    console.log("Esta mensagem será exibida após 2 segundos.");
+}, 2000);
+```
+
+### setTimeout em código assíncrono
+
+```js
+function esperarMensagem(callback) {
+    setTimeout(() => {
+        console.log("Mensagem carregada!");
+        callback();
+    }, 2000);
+}
+
+esperarMensagem(() => {
+    console.log("Agora podemos continuar.");
+});
+
+```
+
+📝 Saída:
+
+```js
+// (2 segundos depois...)
+Mensagem carregada!
+Agora podemos continuar.
+
+```
+
+✔️ O callback só roda depois do setTimeout.
